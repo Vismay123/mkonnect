@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "85892211588",
+    "project_id": "mkonnect2",
+    "storage_bucket": "mkonnect2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85892211588:android:cb808a56223a20074333d1",
+        "android_client_info": {
+          "package_name": "com.example.mkonnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85892211588-42svjjsi8kfdf2ge15v0a8ja4osni628.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATSbk4gzxhV1REpYW9dIji_hi5NIz8poY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85892211588-42svjjsi8kfdf2ge15v0a8ja4osni628.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
