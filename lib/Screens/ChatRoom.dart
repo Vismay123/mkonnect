@@ -1,5 +1,5 @@
+import 'dart:developer';
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -75,10 +75,23 @@ class ChatRoom extends StatelessWidget {
   }
 
   void onSendMessage() async {
+  
     if (_message.text.isNotEmpty) {
+      String msg =_message.text.toLowerCase();
+      String encText = '';
+      
+      for(int i = 0; i<msg.length; i++){
+        int msgUnicode = msg[i].codeUnits.first; //msg[i] to unicode value
+        var beforeConvert = (msgUnicode + 7 - 97) % 26 + 97; //here 7 is the shift key
+        var unicodeToMSG = String.fromCharCode(beforeConvert); //unicode value to its alphabet
+        // print(msgUnicode);
+        // print(unicodeToMSG);
+        encText += unicodeToMSG;
+        // print(encText);
+      }
       Map<String, dynamic> messages = {
         "sendby": _auth.currentUser!.displayName,
-        "message": _message.text,
+        "message": encText,
         "type": "text",
         "time": FieldValue.serverTimestamp(),
       };
@@ -141,8 +154,7 @@ class ChatRoom extends StatelessWidget {
                     return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
-                        Map<String, dynamic> map = snapshot.data!.docs[index]
-                            .data() as Map<String, dynamic>;
+                        Map<String, dynamic> map = snapshot.data!.docs[index].data() as Map<String, dynamic>;
                         return messages(size, map, context);
                       },
                     );

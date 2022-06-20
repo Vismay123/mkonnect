@@ -14,7 +14,7 @@ class GroupChatRoom extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  void onSendMessage() async {
+  void onSendMessage() async {//
     if (_message.text.isNotEmpty) {
       Map<String, dynamic> chatData = {
         "sendBy": _auth.currentUser!.displayName,
